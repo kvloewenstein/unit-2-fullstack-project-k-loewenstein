@@ -24,60 +24,60 @@ public class Product {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public String getSkinType() {
-        return skinType;
-    }
-
-    public String getSkinCondition() {
-        return skinCondition;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public String getProductLink() {
-        return productLink;
-    }
-
-    public List<UserSavedProduct> getSavedProducts() {
-        return savedProducts;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getSkinType() {
+        return skinType;
     }
 
     public void setSkinType(String skinType) {
         this.skinType = skinType;
     }
 
+    public String getSkinCondition() {
+        return skinCondition;
+    }
+
     public void setSkinCondition(String skinCondition) {
         this.skinCondition = skinCondition;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 
+    public String getProductLink() {
+        return productLink;
+    }
+
     public void setProductLink(String productLink) {
         this.productLink = productLink;
+    }
+
+    public List<UserSavedProduct> getSavedProducts() {
+        return savedProducts;
     }
 
     public void setSavedProducts(List<UserSavedProduct> savedProducts) {
