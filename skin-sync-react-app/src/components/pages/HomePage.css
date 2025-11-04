@@ -1,0 +1,269 @@
+.home-wrap {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Banner ===== */
+.bannerImage {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  height: 45vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.bannerImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===== Overlapping Image ===== */
+.image {
+  position: relative;
+  margin-top: -10%;
+  left: 0;
+  z-index: 10;
+  text-align: left;
+}
+
+.image img {
+  max-width: 23%;
+  height: auto;
+  display: block;
+  margin-left: 0;
+}
+
+/* ===== Explanation ===== */
+.explaination {
+  font-family: "Michroma", sans-serif;
+  font-size: 30px;
+  max-width: 50%;
+  position: relative;
+  right: auto;
+  left: 5%;
+  top: -5rem;
+}
+
+.explaination h2 {
+  font-family: "Michroma", sans-serif;
+  font-size: 45px;
+  position: relative;
+  right: -15rem;
+
+}
+
+.explaination li {
+  position: relative;
+  right: -6rem;
+}
+
+.face-wash {
+  position: absolute;
+  text-align: right;
+  right: 4rem;
+  z-index: 10;
+  top: 57rem;
+}
+
+.face-wash img {
+  max-width: 65%;
+  width: 65%;
+}
+
+.logo-circle {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background-color: rgba(251, 172, 131, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Michroma", sans-serif;
+  font-size: 28px;
+  color: #6c4747;
+  text-align: center;
+  margin-left: 80%;
+  transform: translateX(-55%);
+  position: absolute;
+  top: 45%;
+
+}
+
+/* ===== Shortcut Button ===== */
+.shortcut-button {
+  position: relative;
+  left: 350px;
+}
+
+.shortcut-button button {
+  padding: 20px;
+  width: 15rem;
+  font-size: 20px;
+}
+
+/* ===================== RESPONSIVNESS ===================== */
+
+/* iPad Pro: 768px – 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .home-wrap {
+    margin-bottom: -5rem;
+  }
+
+  .bannerImage {
+    height: 30vh;
+  }
+
+  .image img {
+    max-width: 34%;
+  }
+
+  .image {
+    margin-top: -12%;
+    z-index: 1;
+  }
+
+  .explaination h2 {
+    left: 50%;
+    transform: translate(-5%, -10%);
+  }
+
+  .explaination {
+    left: 1%;
+    font-size: 23px;
+    position: relative;
+    top: -40px;
+  }
+
+  .shortcut-button {
+    top: 75rem;
+    position: absolute;
+    left: 12rem;
+  }
+
+  .logo-circle {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    margin-left: 40rem;
+    transform: translate(-20%, -80%);
+    z-index: 1;
+  }
+
+  .face-wash {
+    z-index: 2;
+    max-width: 90%;
+    width: 40%;
+    top: 1100px;
+    right: -27px;
+    ;
+  }
+
+}
+
+/* iPad Mini: 744px – 767px */
+@media (min-width: 744px) and (max-width: 768px) {
+  .bannerImage {
+    height: 35vh;
+  }
+
+  .image img {
+    max-width: 35%;
+  }
+
+  .image {
+    margin-top: -15%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .explaination {
+    left: 3%;
+  }
+
+  .face-wash {
+    z-index: 1;
+    max-width: 50%;
+    width: 50%;
+  }
+
+}
+
+/* Mobile: <=743px */
+@media (max-width: 768px) {
+  .bannerImage {
+    height: 25vh;
+  }
+
+  .image img {
+    max-width: 70%;
+    width: 50%;
+  }
+
+  .image {
+    position: relative;
+    margin-top: -20%;
+    z-index: 1;
+  }
+
+  .explaination h2 {
+    font-size: 26px;
+    right: -2rem;
+    top: 1rem;
+  }
+
+  .explaination {
+    left: 1rem;
+    font-size: px;
+    max-width: 100%;
+    top: -1rem;
+  }
+
+  .explaination li {
+    font-size: 18px;
+    right: .5rem;
+  }
+
+  .shortcut-button {
+    position: static;
+    text-align: center;
+
+  }
+
+  .shortcut-button button {
+    padding: 15px;
+    width: 12rem;
+    font-size: 15px;
+
+  }
+
+
+  .face-wash {
+    position: relative;
+    right: -2rem;
+    top: 18rem;
+    width: 300px;
+    max-width: 1100px;
+    z-index: 2;
+  }
+
+  .logo-circle {
+    width: 310px;
+    height: 310px;
+    position: relative;
+    right: 83%;
+    font-size: 21px;
+    transform: translateY(-45%);
+    background-color: rgba(251, 172, 131, 1);
+    border-radius: 50%;
+    color: #6c4747;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+  }
+}
