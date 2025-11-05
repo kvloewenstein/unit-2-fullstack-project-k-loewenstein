@@ -1,26 +1,36 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+   const handleLogin = async (e) => {
     e.preventDefault();
-
     try {
       const res = await fetch("http://localhost:8080/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
-
       const data = await res.text();
-      setMessage(data);
+
+      
+      if (data === "Login successful") {
+        setMessage("Welcome back!");
+        navigate("/"); // redirect to Home
+      } else {
+        setMessage(data); // show error message
+      }
     } catch (err) {
-      setMessage("Error connecting to server");
+      console.error(err);
+      setMessage("Login failed, please try again");
     }
   };
+
 
   return (
     <div className="login-page">

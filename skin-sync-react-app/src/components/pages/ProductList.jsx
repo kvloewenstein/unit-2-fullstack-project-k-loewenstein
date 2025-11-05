@@ -1,8 +1,5 @@
-import { useEffect, useState } from "react";
-
-function ProductList({ skinType, skinConditions }) {
+function ProductList({ skinType, skinCondition }) {
   const [recommendations, setRecommendations] = useState([]);
-  const skinCondition = skinConditions[0]; // since it's a single selection now
 
   useEffect(() => {
     if (!skinType || !skinCondition) return;

@@ -88,7 +88,7 @@ function SkinTypeForm() {
                         <section className="conditions" style={{ marginTop: "1rem" }}>
                             <fieldset>
                                 <legend>Skin Condition:</legend>
-                                {SKIN_CONDITIONS.map((cond, index) => (
+                                {SKIN_CONDITIONS.map((cond) => (
                                     <label
                                         key={cond}
                                         style={{ display: "block", marginBottom: "0.25rem" }}
