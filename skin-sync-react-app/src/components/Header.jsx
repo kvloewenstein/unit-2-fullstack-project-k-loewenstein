@@ -33,9 +33,8 @@ function Header() {
           <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
           <li><Link to="/about" onClick={() => setMenuOpen(false)}>About</Link></li>
           <li><Link to="/skin-quiz" onClick={() => setMenuOpen(false)}>Skin Quiz</Link></li>
-          <li><Link to="/signup" onClick={() => setMenuOpen(false)}>Sign Up</Link></li>
           <li><Link to="/login" onClick={() => setMenuOpen(false)}>Login</Link></li>
-          
+          <li><Link to="/signup" onClick={() => setMenuOpen(false)}>Sign Up</Link></li>
         </ul>
       </nav>
 

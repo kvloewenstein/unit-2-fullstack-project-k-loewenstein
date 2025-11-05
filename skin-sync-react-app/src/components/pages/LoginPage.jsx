@@ -10,6 +10,7 @@ function LoginPage() {
 
    const handleLogin = async (e) => {
     e.preventDefault();
+    setMessage("");
     try {
       const res = await fetch("http://localhost:8080/api/auth/login", {
         method: "POST",
@@ -17,13 +18,11 @@ function LoginPage() {
         body: JSON.stringify({ email, password }),
       });
       const data = await res.text();
+      setMessage(data);
 
       
       if (data === "Login successful") {
-        setMessage("Welcome back!");
         navigate("/"); // redirect to Home
-      } else {
-        setMessage(data); // show error message
       }
     } catch (err) {
       console.error(err);

@@ -10,6 +10,7 @@ function SignupPage() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    setMessage("");
     try {
       const res = await fetch("http://localhost:8080/api/auth/signup", {
         method: "POST",
@@ -17,13 +18,11 @@ function SignupPage() {
         body: JSON.stringify({ email, password }),
       });
       const data = await res.text();
+      setMessage(data);
 
         if (data === "Signup successful") {
-        setMessage("Account created successfully!");
-        navigate("/"); 
-      } else {
-        setMessage(data);
-      }
+        navigate("/login");  
+      } 
     } catch (err) {
       console.error(err);
       setMessage("Signup failed, please try again");

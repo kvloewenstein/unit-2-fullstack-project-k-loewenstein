@@ -37,6 +37,7 @@ public class AuthController {
 
         if (existingUser.isPresent() &&
                 passwordEncoder.matches(user.getPassword(), existingUser.get().getPassword())) {
+            User loggedInUser = existingUser.get();
             return "Login successful";
         } else {
             return "Invalid email or password";
