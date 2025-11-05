@@ -5,6 +5,8 @@ import About from './components/pages/AboutPage'
 import SkinForm from './components/pages/SkinTypeForm'
 import Footer from './components/Footer'
 import './index.css'
+import LoginPage from './components/pages/LoginPage';
+import SignupPage from './components/pages/SignupPage';
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/skin-quiz" element={<SkinForm />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
         </Routes>
       </div>
       <Footer />
