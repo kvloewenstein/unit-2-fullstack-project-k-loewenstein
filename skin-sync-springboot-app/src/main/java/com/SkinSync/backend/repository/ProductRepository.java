@@ -8,5 +8,5 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
     // Filter products by skinType and skinCondition
-    List<Product> findBySkinTypeAndSkinCondition(String skinType, String skinCondition);
+    List<Product> findBySkinTypeIgnoreCaseAndSkinConditionIgnoreCase(String skinType, String skinCondition);
 }
