@@ -3,10 +3,10 @@ import Button from "./Button";
 import ProductList from "./ProductList";
 import "./SkinTypeForm.css";
 
-const SKIN_TYPES = ["Dry", "Oily", "Combination", "Sensitive"];
+const SKIN_TYPES = ["Dry", "Oily", "Combination"];
 const SKIN_CONDITIONS = [
     "None",
-    "Acne-Prone",
+    "Acne Prone",
     "Rosacea",
     "Seborrheic Dermatitis",
     "Contact Dermatitis",
@@ -15,11 +15,12 @@ const SKIN_CONDITIONS = [
 
 function SkinTypeForm() {
     const [skinType, setSkinType] = useState("");
-    const [skinCondition, setSkinCondition] = useState(""); 
+    const [skinCondition, setSkinCondition] = useState("");
     const [submitted, setSubmitted] = useState(false);
+    const [products, setProducts] = useState([]);
     const firstRadioRef = useRef(null);
 
-   
+
     useEffect(() => {
         if (firstRadioRef.current) {
             firstRadioRef.current.focus();
@@ -51,6 +52,24 @@ function SkinTypeForm() {
         setSubmitted(false);
         if (firstRadioRef.current) {
             firstRadioRef.current.focus();
+        }
+    };
+    const handleSave = async () => {
+        if (!products.length) return;
+        try {
+            const payload = products.map((p) => ({
+                user: { id: userId },  // link user
+                product: { id: p.id },
+            }));
+            await fetch("http://localhost:8080/api/saved/bulk", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+            });
+            alert("Products saved to your profile!");
+        } catch (err) {
+            console.error("Error saving products:", err);
+            alert("Failed to save products.");
         }
     };
 
@@ -118,10 +137,15 @@ function SkinTypeForm() {
                     </form>
                 ) : (
                     <>
-                        <ProductList skinType={skinType} skinCondition={skinCondition} />
-                        <Button type="button" onClick={handleClear}>
-                            Start Over
-                        </Button>
+                        <ProductList skinType={skinType} skinCondition={skinCondition} setProducts={setProducts} />
+                        <div style={{ marginTop: "1rem" }}>
+                            <Button type="button" onClick={handleSave} disabled={!products.length}>
+                                Save
+                            </Button>
+                            <Button type="button" onClick={handleClear}>
+                                Start Over
+                            </Button>
+                        </div>
                     </>
                 )}
             </section>

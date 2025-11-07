@@ -8,55 +8,18 @@
 }
 
 .form-box {
-    background-color: rgba(255, 215, 194, 0.83);
-    border: 8px solid rgba(245, 203, 178, 0.8);
-    padding: 3rem 4rem;
+    background-color: #fffbf999;
+    border: 8px solid rgba(251, 172, 131, 1);
+    padding: 3rem 5rem;          
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    max-width: 1000px;
+    max-width: 1400px;           
     width: 100%;
     text-align: center;
     animation: fadeSlideUp 0.8s ease forwards;
     transition: all 0.5s ease;
-    
 }
 
-.result-container {
-    max-width: 2000px;
-    padding: 4rem 6rem;
-    min-height: 600px;
-    font-size: 1.5rem;
-
-}
-
-.results-container>div {
-    flex: 1;
-    margin: 0 1rem;
-}
-
-.results-container h3 {
-    text-align: left;
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-    color: #533121;
-}
-
-.results-container ul {
-    list-style-type: disc;
-    padding-left: 1.5rem;
-    text-align: left;
-    color: #533121;
-}
-
-.results-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.results-container+button {
-    margin-top: 2rem;
-}
 
 @keyframes fadeSlideUp {
     from {
@@ -101,7 +64,7 @@ label {
 }
 
 input[type="radio"],
-input[type="checkbox"] {
+input[type="radio"] {
     margin-right: 0.7rem;
     accent-color: #8b827a;
     width: 18px;
@@ -119,7 +82,7 @@ button.button:disabled {
 @media (max-width: 768px) {
     .result-container {
         padding: 2rem;
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     .results-container {
@@ -143,7 +106,7 @@ button.button:disabled {
     }
 
     h2 {
-        font-size: 2rem;
+        font-size: 1.3rem;
         text-align: center;
     }
 
