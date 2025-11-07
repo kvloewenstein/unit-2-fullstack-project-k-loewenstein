@@ -110,9 +110,9 @@ header.header::after {
 .nav-links ul {
   list-style: none;
   display: flex;
-  position: absolute;
+  position: relative;
   gap: 1rem;
-  margin: 0;
+  margin-left: 20rem;
   padding: 0;
 }
 
@@ -229,7 +229,7 @@ button:hover,
   /* Show normal nav links */
   .nav-links ul {
     display: flex;
-    position: absolute;
+    position: relative;
     gap: 1rem;
   }
 
@@ -273,7 +273,6 @@ button:hover,
     bottom: -.6rem;
   }
 
-  /* Keep your working mobile hamburger exactly as before */
   .hamburger {
     display: flex;
     flex-direction: column;
@@ -293,9 +292,10 @@ button:hover,
     background-color: #ffffff;
     border-radius: 2px;
     transition: all 0.3s ease;
+    
   }
 
-  /* Overlay Nav */
+  
   .nav-links {
     position: fixed;
     top: 0;
@@ -319,14 +319,20 @@ button:hover,
 
   .nav-links ul {
     flex-direction: column;
-    text-align: center;
+    align-items: center;
     padding: 0;
     gap: 2rem;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    
   }
 
   .nav-links ul li a {
     font-size: 1.8rem;
     color: #000;
+    
   }
 
   .nav-links ul li a:hover {

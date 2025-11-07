@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
+@CrossOrigin(origins = "http://localhost:5173")
 public class ProductController {
 
     @Autowired
@@ -25,32 +26,12 @@ public class ProductController {
     public Product getProductById(@PathVariable Long id) {
         return productRepository.findById(id).orElse(null);
     }
-
-    // POST (create new product)
-    @PostMapping
-    public Product createProduct(@RequestBody Product product) {
-        return productRepository.save(product);
-    }
-
-    // PUT (update existing product)
-    @PutMapping("/{id}")
-    public Product updateProduct(@PathVariable Long id, @RequestBody Product updatedProduct) {
-        return productRepository.findById(id)
-                .map(product -> {
-                    product.setName(updatedProduct.getName());
-                    product.setCategory(updatedProduct.getCategory());
-                    product.setSkinType(updatedProduct.getSkinType());
-                    product.setSkinCondition(updatedProduct.getSkinCondition());
-                    product.setImageUrl(updatedProduct.getImageUrl());
-                    product.setProductLink(updatedProduct.getProductLink());
-                    return productRepository.save(product);
-                }).orElse(null);
-    }
-
-    // DELETE
-    @DeleteMapping("/{id}")
-    public String deleteProduct(@PathVariable Long id) {
-        productRepository.deleteById(id);
-        return "Product deleted successfully.";
+    // GET recommendations
+    @GetMapping("/recommendations")
+    public List<Product> getRecommendations(
+            @RequestParam String skinType,
+            @RequestParam String skinCondition
+    ) {
+        return productRepository.findBySkinTypeIgnoreCaseAndSkinConditionIgnoreCase(skinType, skinCondition);
     }
 }

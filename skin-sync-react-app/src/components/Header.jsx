@@ -1,8 +1,17 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const isLoggedIn = !!localStorage.getItem("userEmail");
+
+  const handleLogout = () => {
+    localStorage.removeItem("userEmail");
+    navigate("/login");
+  };
+
 
   return (
     <header className="header">
@@ -33,8 +42,17 @@ function Header() {
           <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
           <li><Link to="/about" onClick={() => setMenuOpen(false)}>About</Link></li>
           <li><Link to="/skin-quiz" onClick={() => setMenuOpen(false)}>Skin Quiz</Link></li>
-          <li><Link to="/login" onClick={() => setMenuOpen(false)}>Login</Link></li>
-          <li><Link to="/signup" onClick={() => setMenuOpen(false)}>Sign Up</Link></li>
+         {!isLoggedIn ? (
+            <>
+              <li><Link to="/login" onClick={() => setMenuOpen(false)}>Login</Link></li>
+              <li><Link to="/signup" onClick={() => setMenuOpen(false)}>Sign Up</Link></li>
+            </>
+          ) : (
+            <>
+              <li><Link to="/profile" onClick={() => setMenuOpen(false)}>My Profile</Link></li>
+              <li><button onClick={handleLogout}style={{ padding: ".5rem 0.5rem", fontSize: "0.8rem" }}>Logout</button></li>
+            </>
+          )}
         </ul>
       </nav>
 
