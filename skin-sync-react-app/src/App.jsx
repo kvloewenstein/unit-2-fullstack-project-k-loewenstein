@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 import './index.css'
 import LoginPage from './components/pages/LoginPage';
 import SignupPage from './components/pages/SignupPage';
+import ProfilePage from './components/pages/ProfilePage'; 
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/skin-quiz" element={<SkinForm />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </div>
       <Footer />

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import "./LoginSignupPage.css"
 
 function SignupPage() {
   const [email, setEmail] = useState("");
@@ -31,26 +31,28 @@ function SignupPage() {
 
   return (
     <div className="signup-page">
-      <h2>Create Account</h2>
-      <form onSubmit={handleSignup}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Sign Up</button>
-      </form>
-      {message && <p>{message}</p>}
-    </div>
+  <form onSubmit={handleSignup}>
+    <h2>Create Account</h2>
+
+    <input
+      type="email"
+      placeholder="Email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      required
+    />
+    <input
+      type="password"
+      placeholder="Password"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      required
+    />
+    <button type="submit">Sign Up</button>
+
+    {message && <p className="form-message">{message}</p>}
+  </form>
+</div>
   );
 }
 

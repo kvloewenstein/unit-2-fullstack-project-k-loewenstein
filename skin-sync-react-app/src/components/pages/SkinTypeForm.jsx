@@ -74,7 +74,7 @@ function SkinTypeForm() {
     };
 
     return (
-        <main className="form-wrap">
+        <main className="form-wrap" >
             <section className={submitted ? "form-box result-container" : "form-box"}>
                 {/* Show different heading depending on form or results */}
                 <h2>
@@ -138,9 +138,9 @@ function SkinTypeForm() {
                 ) : (
                     <>
                         <ProductList skinType={skinType} skinCondition={skinCondition} setProducts={setProducts} />
-                        <div style={{ marginTop: "1rem" }}>
+                        <div style={{ marginTop: "2rem", display: "flex", gap: "1rem"}}>
                             <Button type="button" onClick={handleSave} disabled={!products.length}>
-                                Save
+                                Save to profile
                             </Button>
                             <Button type="button" onClick={handleClear}>
                                 Start Over

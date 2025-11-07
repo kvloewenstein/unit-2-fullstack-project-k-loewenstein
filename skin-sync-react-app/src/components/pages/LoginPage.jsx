@@ -8,7 +8,7 @@ function LoginPage() {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
-   const handleLogin = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setMessage("");
     try {
@@ -20,8 +20,9 @@ function LoginPage() {
       const data = await res.text();
       setMessage(data);
 
-      
+
       if (data === "Login successful") {
+         localStorage.setItem("userEmail", email);
         navigate("/"); // redirect to Home
       }
     } catch (err) {
@@ -33,8 +34,9 @@ function LoginPage() {
 
   return (
     <div className="login-page">
-      <h2>Login</h2>
       <form onSubmit={handleLogin}>
+        <h2>Login</h2>
+
         <input
           type="email"
           placeholder="Email"
@@ -50,14 +52,13 @@ function LoginPage() {
           required
         />
         <button type="submit">Login</button>
+
+        {message && <p className="form-message">{message}</p>}
+
+        <div className="signup-prompt">
+          <p>Not a user? <a href="/signup">Create an account for free today!</a></p>
+        </div>
       </form>
-
-      {message && <p>{message}</p>}
-
-      <div className="signup-prompt">
-        <p>Not a user?</p>
-        <a href="/signup">Create an account for free today!</a>
-      </div>
     </div>
   );
 }
