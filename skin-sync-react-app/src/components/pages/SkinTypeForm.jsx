@@ -17,7 +17,7 @@ function SkinTypeForm() {
     const [skinType, setSkinType] = useState("");
     const [skinCondition, setSkinCondition] = useState("");
     const [submitted, setSubmitted] = useState(false);
-    const [products, setProducts] = useState([]);
+    const [products, setProductIds] = useState([]);
     const firstRadioRef = useRef(null);
 
 
@@ -55,23 +55,27 @@ function SkinTypeForm() {
             firstRadioRef.current.focus();
         }
     };
-    const handleSave = async () => {
-        if (!products.length) return;
-        try {
-            const payload = products.map((p) => ({
-                user: { id: userId },  // link user
-                product: { id: p.id },
-            }));
-            await fetch("http://localhost:8080/api/saved/bulk", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload),
-            });
-            alert("Products saved to your profile!");
-        } catch (err) {
-            console.error("Error saving products:", err);
-            alert("Failed to save products.");
+    const handleSaveAll = async () => {
+        const userId = localStorage.getItem("userId");
+        if (!userId) {
+            alert("Please log in first.");
+            return;
         }
+
+        // Get product IDs from ProductList
+        if (!productIds || productIds.length === 0) {
+            alert("No products to save");
+            return;
+        }
+
+        const res = await fetch("http://localhost:8080/api/saved/bulk", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userId, productIds })
+        });
+
+        const msg = await res.text();
+        alert(msg);
     };
 
     return (
@@ -138,9 +142,9 @@ function SkinTypeForm() {
                     </form>
                 ) : (
                     <>
-                        <ProductList skinType={skinType} skinCondition={skinCondition} setProducts={setProducts} />
+                        <ProductList skinType={skinType} skinCondition={skinCondition} setProductIds={setProductIds} />
                         <div style={{ marginTop: "2rem", display: "flex", gap: "1rem", justifyContent: "center" }}>
-                            <Button type="button" onClick={handleSave} disabled={!products.length}>
+                            <Button type="button" onClick={handleSaveAll} disabled={!products.length}>
                                 Save to profile
                             </Button>
                             <Button type="button" onClick={handleClear}>

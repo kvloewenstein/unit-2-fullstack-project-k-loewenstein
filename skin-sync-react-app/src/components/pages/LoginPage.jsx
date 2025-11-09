@@ -6,6 +6,7 @@ function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [redirect, setRedirect] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -17,13 +18,15 @@ function LoginPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
-      const data = await res.text()
-      setMessage(data);
+      const data = await res.json();
+      console.log(data)
 
-
-      if (data === "Login successful") {
-        localStorage.setItem("userEmail", email);
-        navigate("/"); // redirect to Home
+      if (data.id) {
+        localStorage.setItem("userId", data.id);
+        localStorage.setItem("userEmail", data.email);
+        navigate("/profile"); 
+      } else {
+        setMessage(data.error || "Login failed");
       }
     } catch (err) {
       console.error(err);

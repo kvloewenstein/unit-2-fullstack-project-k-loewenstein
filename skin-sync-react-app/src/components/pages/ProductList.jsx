@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./ProductList.css";
 
-function ProductList({ skinType, skinCondition }) {
+function ProductList({ skinType, skinCondition, setProductIds }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -35,43 +35,51 @@ function ProductList({ skinType, skinCondition }) {
   const cleansers = products.filter((p) => p.category === "Cleanser");
   const moisturizers = products.filter((p) => p.category === "Moisturizer");
 
+  useEffect(() => {
+    const ids = [
+      ...cleansers.map((p) => p.id),
+      ...moisturizers.map((p) => p.id),
+    ];
+    setProductIds(ids);
+  }, [cleansers, moisturizers, setProductIds]);
+
   return (
     <div className="recommendations-wrapper">
       <div className="recommendations">
-      {cleansers.length > 0 && (
-        <section className="cleansers">
-          <h3>Cleansers</h3>
-          <div className="product-list">
-            {cleansers.map((product) => (
-              <div key={product.id} className="product-card">
-                <img src={product.imageUrl} alt={product.name} />
-                <h5>{product.name}</h5>
-                <a href={product.productLink} target="_blank" rel="noopener noreferrer">
-                  View Product
-                </a>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
+        {cleansers.length > 0 && (
+          <section className="cleansers">
+            <h3>Cleansers</h3>
+            <div className="product-list">
+              {cleansers.map((product) => (
+                <div key={product.id} className="product-card">
+                  <img src={product.imageUrl} alt={product.name} />
+                  <h5>{product.name}</h5>
+                  <a href={product.productLink} target="_blank" rel="noopener noreferrer">
+                    View Product
+                  </a>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
-      {moisturizers.length > 0 && (
-        <section className="moisturizers">
-          <h3>Moisturizers</h3>
-          <div className="product-list">
-            {moisturizers.map((product) => (
-              <div key={product.id} className="product-card">
-                <img src={product.imageUrl} alt={product.name} />
-                <h5>{product.name}</h5>
-                <a href={product.productLink} target="_blank" rel="noopener noreferrer">
-                  View Product
-                </a>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-    </div>
+        {moisturizers.length > 0 && (
+          <section className="moisturizers">
+            <h3>Moisturizers</h3>
+            <div className="product-list">
+              {moisturizers.map((product) => (
+                <div key={product.id} className="product-card">
+                  <img src={product.imageUrl} alt={product.name} />
+                  <h5>{product.name}</h5>
+                  <a href={product.productLink} target="_blank" rel="noopener noreferrer">
+                    View Product
+                  </a>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+      </div>
       <p className="save-message">
         Save These to Your Profile & Track What Product Worked Best for You!
       </p>

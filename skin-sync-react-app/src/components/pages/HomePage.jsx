@@ -6,7 +6,7 @@ function Home() {
         <main className="home-wrap">
             <section>
                 <div className="bannerImage">
-                   <img src="/images/home-background.png" alt="Skin Care aesthetic background" />
+                    <img src="/images/home-background.png" alt="Skin Care aesthetic background" />
                 </div>
                 <div className="image">
                     <img src="/images/skin_care_image.png" alt="Person pouring a skin product into hand" />

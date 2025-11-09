@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Optional;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Collections;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -20,27 +23,34 @@ public class AuthController {
 
     // ----- SIGNUP -----
     @PostMapping("/signup")
-    public String signup(@RequestBody User user) {
+    public Map<String, Object> signup(@RequestBody User user) {
         if (userRepository.findByEmail(user.getEmail()).isPresent()) {
-            return "Email already exists";
+            return Collections.singletonMap("error", "Email already exists");
         }
 
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
-        return "Signup successful";
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Signup successful");
+        response.put("email", user.getEmail());
+        response.put("id", user.getId());
+        return response;
     }
 
     // ----- LOGIN -----
     @PostMapping("/login")
-    public String login(@RequestBody User user) {
+    public Map<String, Object> login(@RequestBody User user) {
         Optional<User> existingUser = userRepository.findByEmail(user.getEmail());
 
         if (existingUser.isPresent() &&
                 passwordEncoder.matches(user.getPassword(), existingUser.get().getPassword())) {
             User loggedInUser = existingUser.get();
-            return "Login successful";
-        } else {
-            return "Invalid email or password";
+            Map<String, Object> response = new HashMap<>();
+            response.put("id", loggedInUser.getId());
+            response.put("email", loggedInUser.getEmail());
+            response.put("message", "Login successful");
+
+            return response;
         }
+
+        return Collections.singletonMap("error", "Invalid email or password");
     }
-}
+    }
