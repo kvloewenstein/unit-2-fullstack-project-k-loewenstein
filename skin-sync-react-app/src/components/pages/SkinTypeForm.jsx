@@ -21,6 +21,7 @@ function SkinTypeForm() {
     const firstRadioRef = useRef(null);
 
 
+
     useEffect(() => {
         if (firstRadioRef.current) {
             firstRadioRef.current.focus();
@@ -138,7 +139,7 @@ function SkinTypeForm() {
                 ) : (
                     <>
                         <ProductList skinType={skinType} skinCondition={skinCondition} setProducts={setProducts} />
-                        <div style={{ marginTop: "2rem", display: "flex", gap: "1rem"}}>
+                        <div style={{ marginTop: "2rem", display: "flex", gap: "1rem", justifyContent: "center" }}>
                             <Button type="button" onClick={handleSave} disabled={!products.length}>
                                 Save to profile
                             </Button>

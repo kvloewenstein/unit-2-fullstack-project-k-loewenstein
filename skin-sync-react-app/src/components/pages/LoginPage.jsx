@@ -17,12 +17,12 @@ function LoginPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
-      const data = await res.text();
+      const data = await res.text()
       setMessage(data);
 
 
       if (data === "Login successful") {
-         localStorage.setItem("userEmail", email);
+        localStorage.setItem("userEmail", email);
         navigate("/"); // redirect to Home
       }
     } catch (err) {
