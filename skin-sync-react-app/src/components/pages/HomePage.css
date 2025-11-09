@@ -5,6 +5,12 @@
   padding: 0;
 }
 
+section {
+  position: relative;
+  /* makes face-wash and logo-circle absolute positions relative to section */
+
+}
+
 /* ===== Banner ===== */
 .bannerImage {
   width: 100vw;
@@ -46,6 +52,7 @@
   right: auto;
   left: 5%;
   top: -5rem;
+
 }
 
 .explaination h2 {
@@ -58,25 +65,27 @@
 
 .explaination li {
   position: relative;
-  right: -6rem;
+  right: -5rem;
+
 }
 
 .face-wash {
   position: absolute;
-  text-align: right;
-  right: 4rem;
-  z-index: 10;
-  top: 57rem;
+  top: 80%;
+  right: -6%;
+  z-index: 2;
+  max-width: 60%;
 }
 
 .face-wash img {
-  max-width: 65%;
+  max-width: 60%;
   width: 65%;
+
 }
 
 .logo-circle {
-  width: 500px;
-  height: 500px;
+  width: 475px;
+  height: 475px;
   border-radius: 50%;
   background-color: rgba(251, 172, 131, 1);
   display: flex;
@@ -89,7 +98,8 @@
   margin-left: 80%;
   transform: translateX(-55%);
   position: absolute;
-  top: 45%;
+  top: 1%;
+
 
 }
 

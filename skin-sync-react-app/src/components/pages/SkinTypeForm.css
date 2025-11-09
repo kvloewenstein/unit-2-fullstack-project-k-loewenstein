@@ -2,10 +2,40 @@
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+
     font-family: "Michroma", sans-serif;
     padding: 1rem;
 
+}
+
+.form-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    padding: 1rem;
+    gap: 1.5rem;
+}
+
+.result-container {
+    display: block;
+    width: 1000%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.result-container>* {
+    margin-bottom: 1.5rem;
+    /* spacing between elements */
+}
+
+.result-container h2 {
+    text-align: center;
+    color: #603f30;
+    padding: 4rem;
 }
 
 @keyframes fadeSlideUp {

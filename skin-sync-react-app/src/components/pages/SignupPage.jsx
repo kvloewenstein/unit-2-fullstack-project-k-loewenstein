@@ -20,9 +20,9 @@ function SignupPage() {
       const data = await res.text();
       setMessage(data);
 
-        if (data === "Signup successful") {
-        navigate("/login");  
-      } 
+      if (data === "Signup successful") {
+        navigate("/login");
+      }
     } catch (err) {
       console.error(err);
       setMessage("Signup failed, please try again");
@@ -31,28 +31,28 @@ function SignupPage() {
 
   return (
     <div className="signup-page">
-  <form onSubmit={handleSignup}>
-    <h2>Create Account</h2>
+      <form onSubmit={handleSignup}>
+        <h2>Create Account</h2>
 
-    <input
-      type="email"
-      placeholder="Email"
-      value={email}
-      onChange={(e) => setEmail(e.target.value)}
-      required
-    />
-    <input
-      type="password"
-      placeholder="Password"
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-      required
-    />
-    <button type="submit">Sign Up</button>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit">Sign Up</button>
 
-    {message && <p className="form-message">{message}</p>}
-  </form>
-</div>
+        {message && <p className="form-message">{message}</p>}
+      </form>
+    </div>
   );
 }
 
