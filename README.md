@@ -113,4 +113,73 @@ Wireframes / UI Previews
 > - MySQL Server (version 8.0+)
 
 ---
+### Back End Setup (Java/Spring Boot/MySQL)
+
+1. **Clone the repository:**  
+   In the terminal, navigate to the directory where you want the project saved, then run:
+
+    ```shell
+    git clone https://github.com/kvloewenstein/unit-2-fullstack-project-k-loewenstein
+    cd unit-2-fullstack-project-k-loewenstein/backend
+    ```
+
+2. **Configure the database:**  
+   Create a new MySQL database named `skinsync_db`, then update your  
+   `src/main/resources/application.properties` file with your actual MySQL credentials:
+
+    ```properties
+    spring.datasource.url=jdbc:mysql://127.0.0.1:3306/skinsync_db?useSSL=false&serverTimezone=UTC
+    spring.datasource.username=skinsync_admin
+    spring.datasource.password=YOUR_PASSWORD
+    spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+    spring.jpa.hibernate.ddl-auto=update
+    spring.jpa.show-sql=true
+    spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+    ```
+
+3. **Run the Java/Spring Boot application:**  
+   If you are not running from an IDE, go to the root backend folder and run:
+
+    ```shell
+    mvn spring-boot:run
+    ```
+
+🟢 The API will start at:  
+`http://localhost:8080`
+
+> [!WARNING]
+> If you see `UnsupportedClassVersionError`, your JDK version is incorrect.  
+> Make sure your `JAVA_HOME` and IDE are set to use **JDK 21**.
+
+---
+
+### Front End Setup (React/Vite)
+
+1. **Navigate to the frontend project directory:**
+
+    ```shell
+    cd ../frontend
+    ```
+
+2. **Install dependencies:**
+
+    ```shell
+    npm install
+    # or
+    yarn install
+    ```
+
+3. **Run the React/Vite application:**
+
+    ```shell
+    npm run dev
+    # or
+    yarn dev
+    ```
+
+🟢 The frontend will run at:  
+`http://localhost:5173`
+
+---
 
