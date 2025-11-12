@@ -50,7 +50,7 @@ function Header() {
           ) : (
             <>
               <li><Link to="/profile" onClick={() => setMenuOpen(false)}>My Profile</Link></li>
-              <li><button onClick={handleLogout} style={{ padding: ".5rem 0.5rem", fontSize: "0.8rem" }}>Logout</button></li>
+              
             </>
           )}
         </ul>
