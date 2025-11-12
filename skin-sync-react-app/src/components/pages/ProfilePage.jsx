@@ -81,6 +81,12 @@ function ProfilePage() {
         body: JSON.stringify({ notes: notes.trim() }),
       });
 
+      setSavedProducts(prev =>
+      prev.map(item =>
+        item.id === savedId ? { ...item, notes: notes.trim() } : item
+      )
+    );
+
       setNotes("");
       fetchSavedProducts();
     } catch (err) {
@@ -138,12 +144,8 @@ function ProfilePage() {
 
       <h1 className="welcome-title">Welcome Back!</h1>
 
-      <section className="skin-profile">
-        <p>Your Skin Profile:</p>
-      </section>
-
       <h2 className="section-title">Saved Products:</h2>
-      
+
       <div className="product-columns">
         <div className="column-box">
           <h3>Cleansers</h3>
@@ -155,16 +157,16 @@ function ProfilePage() {
           {moisturizers.length > 0 ? moisturizers.map(renderProductCard) : <p>No saved moisturizers yet.</p>}
         </div>
       </div>
-      <div className="start-over">
-         <p>Want to Start Over?</p>
       {savedProducts.length > 0 && (
-        <button
-          className="delete-btn"
-          onClick={handleDeleteAllSaved}>
-          Delete All Saved Products
-        </button>
+        <div className="start-over">
+          <p>Want to Start Over?</p>
+          <button
+            className="delete-btn"
+            onClick={handleDeleteAllSaved}>
+            Delete All Saved Products
+          </button>
+        </div>
       )}
-      </div>
       <br></br>
       <div className="notes-section">
         <h3>Add Notes About Products:</h3>
