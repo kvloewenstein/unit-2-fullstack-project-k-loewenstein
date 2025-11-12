@@ -17,10 +17,11 @@ function SignupPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
-      const data = await res.text();
-      setMessage(data);
-
-      if (data === "Signup successful") {
+      const data = await res.json();
+      if (data.error) {
+        setMessage(data.error);
+      } else if (data.message === "Signup successful") {
+        setMessage(data.message);
         navigate("/login");
       }
     } catch (err) {

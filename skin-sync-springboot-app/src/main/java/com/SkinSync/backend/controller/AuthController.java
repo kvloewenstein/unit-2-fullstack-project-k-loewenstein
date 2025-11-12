@@ -28,6 +28,8 @@ public class AuthController {
             return Collections.singletonMap("error", "Email already exists");
         }
 
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         Map<String, Object> response = new HashMap<>();
         response.put("message", "Signup successful");
         response.put("email", user.getEmail());
