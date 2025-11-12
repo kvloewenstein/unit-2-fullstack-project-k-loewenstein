@@ -5,10 +5,13 @@ function ProductList({ skinType, skinCondition, setProductIds }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+
   useEffect(() => {
+    if (!skinType || !skinCondition) return;
     const fetchProducts = async () => {
-      setLoading(true); 
-      setError(""); 
+      setLoading(true);
+      setError("");
 
       try {
         const res = await fetch(
@@ -20,7 +23,8 @@ function ProductList({ skinType, skinCondition, setProductIds }) {
         }
 
         const data = await res.json();
-        setProducts(data);
+        const filtered = data.filter(p => p && p.category);
+        setProducts(filtered);
       } catch (err) {
         console.error("Error fetching products:", err);
         setError("Failed to load recommendations");
@@ -36,22 +40,15 @@ function ProductList({ skinType, skinCondition, setProductIds }) {
   const cleansers = products.filter((p) => p.category === "Cleanser");
   const moisturizers = products.filter((p) => p.category === "Moisturizer");
 
-  
+
   useEffect(() => {
-  const ids = [
-    ...cleansers.map((p) => p.id),
-    ...moisturizers.map((p) => p.id),
-  ];
-
-  setProductIds((prevIds) => {
-    // Compare previous IDs with new IDs
-    const areSame =
-      prevIds.length === ids.length &&
-      prevIds.every((id, index) => id === ids[index]);
-
-    return areSame ? prevIds : ids;
-  });
-}, [cleansers, moisturizers, setProductIds]);
+    const ids = [...cleansers, ...moisturizers].map((p) => p.id);
+    setProductIds((prevIds) => {
+      const same =
+        prevIds.length === ids.length && prevIds.every((id, i) => id === ids[i]);
+      return same ? prevIds : ids;
+    });
+  }, [cleansers, moisturizers, setProductIds]);
 
   if (loading) return <p>Loading recommendations...</p>;
   if (error) return <p>{error}</p>;
