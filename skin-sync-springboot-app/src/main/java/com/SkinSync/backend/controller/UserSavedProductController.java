@@ -62,7 +62,7 @@ public class UserSavedProductController {
                             saved.getSavedAt()
                     );
                 })
-                .filter(dto -> dto != null) // remove any nulls
+                .filter(dto -> dto != null)
                 .toList();
     }
 
@@ -86,15 +86,14 @@ public class UserSavedProductController {
             @PathVariable Long savedId,
             @RequestBody NotesRequest request
     ) {
-        UserSavedProduct saved = savedProductRepository.findById(savedId).orElse(null);
-        if (saved == null) return "Saved product not found";
+        UserSavedProduct saved = savedProductRepository.findById(savedId)
+                .orElseThrow(() -> new RuntimeException("Saved product not found"));
 
         saved.setNotes(request.getNotes());
         savedProductRepository.save(saved);
 
         return "Notes updated";
     }
-
 
     public static class BulkSaveRequest {
         private Long userId;
@@ -128,14 +127,12 @@ public class UserSavedProductController {
             this.feedback = feedback;
         }
     }
-
     public static class NotesRequest {
         private String notes;
 
         public String getNotes() {
             return notes;
         }
-
         public void setNotes(String notes) {
             this.notes = notes;
         }

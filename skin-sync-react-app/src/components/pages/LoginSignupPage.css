@@ -1,0 +1,87 @@
+.login-page,
+.signup-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Michroma", sans-serif;
+  padding: 2rem;
+
+}
+
+/* Card container */
+form {
+  background-color: #fffbf999;
+  border: 8px solid rgba(251, 172, 131, 1);
+  padding: 3rem 5rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Form headings */
+h2 {
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+/* Input fields stacked vertically with space */
+input {
+  padding: 0.8rem 1rem;
+  font-size: 1.1rem;
+  border: 2px solid rgba(251, 172, 131, 0.8);
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  border-color: #fba07f;
+  box-shadow: 0 0 5px rgba(251, 172, 131, 0.5);
+}
+
+/* Buttons */
+button {
+  padding: 0.8rem 1.2rem;
+  font-size: 1.1rem;
+  background-color: rgba(251, 172, 131, 1);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+button:hover {
+  background-color: rgba(251, 150, 100, 1);
+}
+
+
+/* Signup prompt link */
+.signup-prompt {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.signup-prompt a {
+  color: rgba(251, 172, 131, 1);
+  text-decoration: none;
+  margin-left: 0.3rem;
+}
+
+.signup-prompt a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  form {
+    padding: 2rem 2.5rem;
+  }
+}
