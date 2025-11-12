@@ -1,5 +1,6 @@
 package com.SkinSync.backend.controller;
 
+import com.SkinSync.backend.dto.UserSavedProductDTO;
 import com.SkinSync.backend.model.Product;
 import com.SkinSync.backend.model.User;
 import com.SkinSync.backend.model.UserSavedProduct;
@@ -46,8 +47,23 @@ public class UserSavedProductController {
 
     // Get saved products for a user
     @GetMapping("/{userId}")
-    public List<UserSavedProduct> getSavedProducts(@PathVariable Long userId) {
-        return savedProductRepository.findByUserId(userId);
+    public List<UserSavedProductDTO> getSavedProducts(@PathVariable Long userId) {
+        return savedProductRepository.findByUserId(userId).stream()
+                .map(saved -> {
+                    if (saved.getProduct() == null) return null; // skip if product is null
+                    return new UserSavedProductDTO(
+                            saved.getId(),
+                            saved.getProduct().getName(),
+                            saved.getProduct().getCategory(),
+                            saved.getProduct().getImageUrl(),
+                            saved.getProduct().getProductLink(),
+                            saved.getUserFeedback(),
+                            saved.getNotes(),
+                            saved.getSavedAt()
+                    );
+                })
+                .filter(dto -> dto != null) // remove any nulls
+                .toList();
     }
 
     @PutMapping("/{savedId}/feedback")

@@ -17,8 +17,9 @@ function SkinTypeForm() {
     const [skinType, setSkinType] = useState("");
     const [skinCondition, setSkinCondition] = useState("");
     const [submitted, setSubmitted] = useState(false);
-    const [products, setProductIds] = useState([]);
+    const [productIds, setProductIds] = useState([]);
     const firstRadioRef = useRef(null);
+    
 
 
 
@@ -144,7 +145,7 @@ function SkinTypeForm() {
                     <>
                         <ProductList skinType={skinType} skinCondition={skinCondition} setProductIds={setProductIds} />
                         <div style={{ marginTop: "2rem", display: "flex", gap: "1rem", justifyContent: "center" }}>
-                            <Button type="button" onClick={handleSaveAll} disabled={!products.length}>
+                            <Button type="button" onClick={handleSaveAll} disabled={!productIds.length}>
                                 Save to profile
                             </Button>
                             <Button type="button" onClick={handleClear}>
