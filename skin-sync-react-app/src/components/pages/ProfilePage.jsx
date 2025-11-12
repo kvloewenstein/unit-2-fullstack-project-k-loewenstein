@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 import "./ProfilePage.css";
 
 function ProfilePage() {
@@ -7,6 +8,15 @@ function ProfilePage() {
   const [error, setError] = useState("");
   const [notes, setNotes] = useState("");
   const userId = localStorage.getItem("userId");
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("userEmail");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("skinType");
+    localStorage.removeItem("skinCondition");
+    navigate("/login");
+  };
 
   // Fetch saved products from backend
   useEffect(() => {
@@ -71,8 +81,8 @@ function ProfilePage() {
         body: JSON.stringify({ notes: notes.trim() }),
       });
 
-      setNotes("");          
-      fetchSavedProducts();  
+      setNotes("");
+      fetchSavedProducts();
     } catch (err) {
       console.error("Error saving note:", err);
     }
@@ -109,12 +119,14 @@ function ProfilePage() {
 
   return (
     <div className="profile-container">
+      {/* LOGOUT BUTTON */}
+      <button onClick={handleLogout} style={{ marginBottom: "1rem" }}>Logout</button>
+
       <h1 className="welcome-title">Welcome Back!</h1>
 
       <section className="skin-profile">
         <p>Your Skin Profile:</p>
-        <p>Skin Type: <strong>{localStorage.getItem("skinType") || "N/A"}</strong></p>
-        <p>Skin Condition: <strong>{localStorage.getItem("skinCondition") || "N/A"}</strong></p>
+        
       </section>
 
       <h2 className="section-title">Saved Products:</h2>

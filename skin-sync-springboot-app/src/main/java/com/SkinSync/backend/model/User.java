@@ -2,6 +2,7 @@ package com.SkinSync.backend.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 
 @Entity
@@ -25,6 +26,7 @@ public class User {
 
     // ----- RELATIONSHIPS -----
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("user")
     private List<UserSavedProduct> savedProducts;
 
     // ----- CONSTRUCTORS -----

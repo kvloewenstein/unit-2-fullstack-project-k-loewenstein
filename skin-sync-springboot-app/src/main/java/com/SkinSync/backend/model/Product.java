@@ -1,5 +1,7 @@
 package com.SkinSync.backend.model;
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 import java.util.List;
 
@@ -18,6 +20,8 @@ public class Product {
     private String productLink;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties({"product", "user"})
+
     private List<UserSavedProduct> savedProducts;
 
     public Long getId() {
