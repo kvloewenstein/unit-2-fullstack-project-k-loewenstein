@@ -6,7 +6,6 @@ function ProfilePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [notes, setNotes] = useState("");
-  const [savedNotes, setSavedNotes] = useState([]);
   const userId = localStorage.getItem("userId");
 
   // Fetch saved products from backend
@@ -35,11 +34,11 @@ function ProfilePage() {
     fetchSavedProducts();
   }, [userId]);
 
-  
+
   const cleansers = savedProducts.filter(p => p.category === "Cleanser");
   const moisturizers = savedProducts.filter(p => p.category === "Moisturizer");
 
-  
+
   const handleFeedbackChange = async (savedId, feedback) => {
     try {
       await fetch(`http://localhost:8080/api/saved/${savedId}/feedback`, {
@@ -48,7 +47,7 @@ function ProfilePage() {
         body: JSON.stringify({ feedback }),
       });
 
-      
+
       setSavedProducts(prev =>
         prev.map(item =>
           item.id === savedId ? { ...item, userFeedback: feedback } : item
@@ -59,19 +58,21 @@ function ProfilePage() {
     }
   };
 
-  
-  const handleAddNote = async (savedId) => {
-    if (!notes.trim()) return;
+
+  const handleAddNote = async () => {
+    if (!notes.trim() || savedProducts.length === 0) return;
 
     try {
+      const savedId = savedProducts[0].id;
+
       await fetch(`http://localhost:8080/api/saved/${savedId}/notes`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ notes: notes.trim() }),
       });
 
-      setSavedNotes(prev => [...prev, notes.trim()]);
-      setNotes("");
+      setNotes("");          
+      fetchSavedProducts();  
     } catch (err) {
       console.error("Error saving note:", err);
     }
@@ -141,7 +142,8 @@ function ProfilePage() {
           {savedProducts.length > 0 && (
             <button
               className="submit-btn"
-              onClick={() => handleAddNote(savedProducts[0].id)}>
+              onClick={handleAddNote}
+              disabled={notes.trim() === "" || savedProducts.length === 0}>
               Submit Notes
             </button>
           )}
@@ -149,8 +151,13 @@ function ProfilePage() {
 
         <h4 className="notes-title">Notes:</h4>
         <ul className="saved-notes">
-          {savedNotes.length > 0 ? savedNotes.map((note, index) => <li key={index}>{note}</li>) : <li>No notes added yet.</li>}
+          {savedProducts[0]?.notes && savedProducts[0].notes.trim() !== "" ? (
+            <li>{savedProducts[0].notes}</li>
+          ) : (
+            <li>No notes added yet.</li>
+          )}
         </ul>
+
       </div>
     </div>
   );
