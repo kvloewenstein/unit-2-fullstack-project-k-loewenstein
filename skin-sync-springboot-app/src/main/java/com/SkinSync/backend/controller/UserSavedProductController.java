@@ -33,6 +33,11 @@ public class UserSavedProductController {
         User user = userRepository.findById(request.getUserId()).orElse(null);
         if (user == null) return "User not found";
 
+        List<UserSavedProduct> oldSavedProducts = savedProductRepository.findByUserId(user.getId());
+        if (!oldSavedProducts.isEmpty()) {
+            savedProductRepository.deleteAll(oldSavedProducts);
+        }
+
         List<Product> products = productRepository.findAllById(request.getProductIds());
 
         for (Product product : products) {
@@ -94,7 +99,18 @@ public class UserSavedProductController {
 
         return "Notes updated";
     }
+    // DELETE all saved products for a user
+    @DeleteMapping("/user/{userId}")
+    public String deleteAllSavedProducts(@PathVariable Long userId) {
+        User user = userRepository.findById(userId).orElse(null);
+        if (user == null) return "User not found";
 
+        List<UserSavedProduct> savedProducts = savedProductRepository.findByUserId(userId);
+        if (savedProducts.isEmpty()) return "No saved products to delete";
+
+        savedProductRepository.deleteAll(savedProducts);
+        return "All saved products deleted successfully";
+    }
     public static class BulkSaveRequest {
         private Long userId;
         private List<Long> productIds;
