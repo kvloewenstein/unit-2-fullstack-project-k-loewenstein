@@ -4,23 +4,40 @@
   color: #5a2d22;
 }
 
+.profile-container button {
+  float: right;
+}
+
 .welcome-title {
-  text-align: center;
+  text-align: left;
   font-size: 2.4rem;
   margin-bottom: 1rem;
 }
 
 .skin-profile {
-  text-align: center;
+  text-align: left;
   margin-bottom: 3rem;
   font-size: 1.2rem;
+  margin-left: 3rem;
 }
 
 .section-title {
   border-top: 2px solid #e2b7a3;
-  padding-top: 1rem;
-  margin-top: 1rem;
-  font-size: 1.6rem;
+  padding-top: 3rem;
+  margin-bottom: 5rem;
+  font-size: 2rem;
+  text-align: center;
+  color: #5a2d22;
+}
+
+.delete-btn {
+  display: flex;
+  width: 25rem;
+  margin-bottom: 7rem;
+}
+
+.start-over {
+  float: right;
 }
 
 .product-columns {
@@ -73,7 +90,7 @@
 }
 
 .notes-section {
-  margin-top: 3rem;
+  margin-top: 8rem;
 }
 
 .notes-section textarea {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import "./ProfilePage.css";
 
 function ProfilePage() {
@@ -90,6 +90,20 @@ function ProfilePage() {
 
   const handleClearTextarea = () => setNotes("");
 
+  const handleDeleteAllSaved = async () => {
+    if (!window.confirm("Are you sure you want to delete all saved products? This cannot be undone.")) return;
+
+    try {
+      await fetch(`http://localhost:8080/api/saved/user/${userId}`, {
+        method: "DELETE",
+      });
+
+      setSavedProducts([]);
+    } catch (err) {
+      console.error("Error deleting saved products:", err);
+    }
+  };
+
   if (loading) return <p>Loading your saved products...</p>;
   if (error) return <p>{error}</p>;
 
@@ -120,16 +134,16 @@ function ProfilePage() {
   return (
     <div className="profile-container">
       {/* LOGOUT BUTTON */}
-      <button onClick={handleLogout} style={{ marginBottom: "1rem" }}>Logout</button>
+      <button onClick={handleLogout}>Logout</button>
 
       <h1 className="welcome-title">Welcome Back!</h1>
 
       <section className="skin-profile">
         <p>Your Skin Profile:</p>
-        
       </section>
 
       <h2 className="section-title">Saved Products:</h2>
+      
       <div className="product-columns">
         <div className="column-box">
           <h3>Cleansers</h3>
@@ -141,7 +155,17 @@ function ProfilePage() {
           {moisturizers.length > 0 ? moisturizers.map(renderProductCard) : <p>No saved moisturizers yet.</p>}
         </div>
       </div>
-
+      <div className="start-over">
+         <p>Want to Start Over?</p>
+      {savedProducts.length > 0 && (
+        <button
+          className="delete-btn"
+          onClick={handleDeleteAllSaved}>
+          Delete All Saved Products
+        </button>
+      )}
+      </div>
+      <br></br>
       <div className="notes-section">
         <h3>Add Notes About Products:</h3>
         <textarea
