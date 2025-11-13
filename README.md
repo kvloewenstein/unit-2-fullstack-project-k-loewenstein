@@ -1,8 +1,12 @@
+
+
+<div align="center">
+<img width="561" height="152" alt="image" src="https://github.com/user-attachments/assets/a9915489-59c0-4b8f-8a8b-d6ab399c741f" />
+</div>
+
 <div align="center">
   <h1>Skin-Sync: Full-Stack Web Application</h1>
 </div>
-
-//insert photo here
 
 <br />
 
@@ -74,8 +78,11 @@ The front end is built with modern ReactJS functional components and hooks, with
 Wireframes / UI Previews
 
 <img width="767" height="826" alt="Screenshot 2025-11-10 124621" src="https://github.com/user-attachments/assets/86d1e943-73f6-494b-967a-52bcd16ade8e" />
+<img width="1256" height="686" alt="image" src="https://github.com/user-attachments/assets/5128ab47-cf38-463d-b67d-f987baf0d6b8" />
+<img width="879" height="829" alt="image" src="https://github.com/user-attachments/assets/374ffb7e-157e-427f-9b56-505e3dc357ce" />
 
 ---
+
 
 <a name="tech"></a>
 ## 🛠️ Tech Stack  
@@ -238,6 +245,32 @@ The following RESTful endpoints manage data access for your SkinSync application
 | :--- | :--- | :--- | :--- |
 | 🟡 `POST` | `/api/auth/signup` | Create a new user account | 🌎 Public |
 | 🟡 `POST` | `/api/auth/login` | Login with email & password | 🌎 Public |
+
+---
+<a name="future"></a>
+## 🔮 Future Features
+
+Several features have been scoped out for future development to expand the functionality of SkinSync.
+
+### Feedback & Community
+- Implement a public feedback page where users can post reviews about products
+- Allow users to discuss what worked or didn’t work for them (like a forum)
+
+### Integration with External APIs
+- Fetch new product data from skincare APIs or public product databases
+- Compare prices or availability across different stores
+
+### User Profile Customization
+- Allow users to personalize their profile with an avatar or their own photo
+- Option to manage profile settings and preferences
+
+### Advanced Search, Sort & Filtering
+- Implement dynamic filtering and sorting on the product recommendation page (by skin type, skin condition, or product type)
+- Add a full-text search bar to quickly find products
+
+### Admin Improvements
+- Enhance CRUD operations: Admin dashboard for easier product management
+- Option to update, delete, or add products directly from the admin interface
 
 ---
 
