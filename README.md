@@ -192,12 +192,14 @@ Skin-Sync uses a MySQL database with three main entities managed through JPA/Hib
 3. **UserSavedProducts**: Connects a user to their saved products (join table)
 
 ### Entity Relationship Diagram (ERD)
+<em>Click on the link below to view it in dbdiagram.io.</em><br />
+<a href="https://dbdiagram.io/d/68ed9d4d2e68d21b41459e0d" target="_blank">
+    <img src="https://dbdiagram.io/d/68ed9d4d2e68d21b41459e0d.png" alt="SkinSync ERD" />
+  </a>
 <details open>
   <summary>Click here to toggle view of ERD</summary><br />
   <em>Click on the link below to view it in dbdiagram.io.</em><br />
-  <a href="https://dbdiagram.io/d/68ed9d4d2e68d21b41459e0d" target="_blank">
-    <img src="https://dbdiagram.io/d/68ed9d4d2e68d21b41459e0d.png" alt="SkinSync ERD" />
-  </a>
+  <img width="850" height="658" alt="image" src="https://github.com/user-attachments/assets/af62aa71-4aaf-492b-9da9-42e8ce500006" />
 </details>
 
 ---
