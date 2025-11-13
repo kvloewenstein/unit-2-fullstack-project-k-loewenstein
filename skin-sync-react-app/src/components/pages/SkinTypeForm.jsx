@@ -56,19 +56,19 @@ function SkinTypeForm() {
         }
     };
     const handleSaveAll = async () => {
-    const userId = localStorage.getItem("userId");
-    if (!userId || productIds.length === 0) return alert("No products to save");
+        const userId = localStorage.getItem("userId");
+        if (!userId || productIds.length === 0) return alert("No products to save");
 
-    const res = await fetch("http://localhost:8080/api/saved/bulk", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: Number(userId), productIds }),
-    });
+        const res = await fetch("http://localhost:8080/api/saved/bulk", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userId: Number(userId), productIds }),
+        });
 
-    const msg = await res.text();
-    alert(msg);
-  };
-    
+        const msg = await res.text();
+        alert(msg);
+    };
+
 
     return (
         <main className="form-wrap" >

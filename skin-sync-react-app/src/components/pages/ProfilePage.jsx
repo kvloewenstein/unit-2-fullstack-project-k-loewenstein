@@ -140,7 +140,7 @@ function ProfilePage() {
   return (
     <div className="profile-container">
       {/* LOGOUT BUTTON */}
-      <button onClick={handleLogout}>Logout</button>
+      <button className="logout" onClick={handleLogout}>Logout</button>
 
       <h1 className="welcome-title">Welcome Back!</h1>
 
