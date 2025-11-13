@@ -182,4 +182,23 @@ Wireframes / UI Previews
 `http://localhost:5173`
 
 ---
+<a name="database"></a>
+## 🗄️ Database Structure (ERD)
+
+Skin-Sync uses a MySQL database with three main entities managed through JPA/Hibernate:
+
+1. **User**: Stores user accounts  
+2. **Product**: Stores skincare products  
+3. **UserSavedProducts**: Connects a user to their saved products (join table)
+
+### Entity Relationship Diagram (ERD)
+<details open>
+  <summary>Click here to toggle view of ERD</summary><br />
+  <em>Click on the link below to view it in dbdiagram.io.</em><br />
+  <a href="https://dbdiagram.io/d/68ed9d4d2e68d21b41459e0d" target="_blank">
+    <img src="https://dbdiagram.io/d/68ed9d4d2e68d21b41459e0d.png" alt="SkinSync ERD" />
+  </a>
+</details>
+
+---
 
