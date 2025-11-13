@@ -13,10 +13,10 @@
   justify-content: space-between;
   align-items: stretch;
   flex-wrap: nowrap;
-  width: 150%;
+  width: 130%;
   max-width: 500%;
   box-sizing: border-box;
-  gap: 2%;
+  gap: 1%;
 }
 
 /* Individual boxes for cleansers and moisturizers */
@@ -25,10 +25,10 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 48%;
+  width: 50%;
   /* slightly wider */
   background: rgba(251, 173, 131, 0.471);
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
 }
@@ -37,7 +37,7 @@
 .product-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  gap: 1rem;
   justify-items: center;
   margin-top: 1rem;
 }
@@ -61,7 +61,7 @@
 
 /* Product name and link spacing */
 .product-card h5 {
-  margin: 0.5rem 0;
+  margin: 1rem 0;
 }
 
 .product-card a {

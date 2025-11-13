@@ -6,7 +6,6 @@ function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [redirect, setRedirect] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -19,7 +18,7 @@ function LoginPage() {
         body: JSON.stringify({ email, password }),
       });
       const data = await res.json();
-      console.log(data)
+      
 
       if (data.id) {
         localStorage.setItem("userId", data.id);

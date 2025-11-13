@@ -29,6 +29,7 @@ public class AuthController {
         }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        User savedUser = userRepository.save(user);
 
         Map<String, Object> response = new HashMap<>();
         response.put("message", "Signup successful");
