@@ -202,3 +202,24 @@ Skin-Sync uses a MySQL database with three main entities managed through JPA/Hib
 
 ---
 
+<a name="api"></a>
+## ⚙️ API Endpoints
+
+The following RESTful endpoints manage data access for your SkinSync application.  
+
+### Products 🧴
+| HTTP Method | Endpoint | Description | Access |
+| :--- | :--- | :--- | :--- |
+| 🟢 `GET` | `/api/products` | Retrieve a list of all products | 🌎 Public |
+| 🟢 `GET` | `/api/products/{id}` | Retrieve a single product by ID | 🌎 Public |
+| 🟢 `GET` | `/api/products/recommendations?skinType=&skinCondition=` | Get product recommendations based on skin type and condition | 🌎 Public |
+
+### Users 👤
+| HTTP Method | Endpoint | Description | Access |
+| :--- | :--- | :--- | :--- |
+| 🟢 `GET` | `/api/users` | Get all users | 🔰 Admin / Dev |
+| 🟢 `GET` | `/api/users/{id}` | Get one user by ID | 🔰 Admin / Dev |
+| 🔴 `DEL` | `/api/users/{id}` | Delete a user | 🔰 Admin / Dev |
+| 🟡 `PUT` | `/api/users/{id}` | Update user info (email or password) | 🔰 Admin / Dev |
+
+
