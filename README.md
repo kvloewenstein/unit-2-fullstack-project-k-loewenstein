@@ -222,4 +222,20 @@ The following RESTful endpoints manage data access for your SkinSync application
 | 🔴 `DEL` | `/api/users/{id}` | Delete a user | 🔰 Admin / Dev |
 | 🟡 `PUT` | `/api/users/{id}` | Update user info (email or password) | 🔰 Admin / Dev |
 
+### User Saved Products 💾
+| HTTP Method | Endpoint | Description | Access |
+| :--- | :--- | :--- | :--- |
+| 🟡 `POST` | `/api/saved/bulk` | Save multiple recommended products for a user | 🌎 Public |
+| 🟢 `GET` | `/api/saved/{userId}` | Get all saved products for a user | 🌎 Public |
+| 🟡 `PUT` | `/api/saved/{savedId}/feedback` | Update feedback for a saved product | 🌎 Public |
+| 🟡 `PUT` | `/api/saved/{savedId}/notes` | Update notes for a saved product | 🌎 Public |
+| 🔴 `DEL` | `/api/saved/user/{userId}` | Delete all saved products for a specific user | 🔰 Admin / Dev |
+
+### Authentication 🔐
+| HTTP Method | Endpoint | Description | Access |
+| :--- | :--- | :--- | :--- |
+| 🟡 `POST` | `/api/auth/signup` | Create a new user account | 🌎 Public |
+| 🟡 `POST` | `/api/auth/login` | Login with email & password | 🌎 Public |
+
+---
 
