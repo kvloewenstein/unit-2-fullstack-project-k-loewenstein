@@ -7,12 +7,6 @@ function Header() {
 
   const isLoggedIn = !!localStorage.getItem("userEmail");
 
-  const handleLogout = () => {
-    localStorage.removeItem("userEmail");
-    navigate("/login");
-  };
-
-
   return (
     <header className="header">
       {/* Logo + overlay */}

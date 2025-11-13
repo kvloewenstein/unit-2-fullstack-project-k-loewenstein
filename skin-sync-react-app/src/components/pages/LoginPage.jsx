@@ -18,12 +18,12 @@ function LoginPage() {
         body: JSON.stringify({ email, password }),
       });
       const data = await res.json();
-      
+
 
       if (data.id) {
         localStorage.setItem("userId", data.id);
         localStorage.setItem("userEmail", data.email);
-        navigate("/profile"); 
+        navigate("/profile");
       } else {
         setMessage(data.error || "Login failed");
       }
