@@ -82,10 +82,10 @@ function ProfilePage() {
       });
 
       setSavedProducts(prev =>
-      prev.map(item =>
-        item.id === savedId ? { ...item, notes: notes.trim() } : item
-      )
-    );
+        prev.map(item =>
+          item.id === savedId ? { ...item, notes: notes.trim() } : item
+        )
+      );
 
       setNotes("");
       fetchSavedProducts();
