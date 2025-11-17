@@ -161,6 +161,37 @@ Wireframes / UI Previews
 
 ---
 
+### Seed Data (Importing the CSV File)
+
+This project includes a CSV file containing sample skincare product data, which is required for the app to function correctly.
+
+#### 📄 
+
+---
+
+### 📥 How to Import the CSV Into MySQL Workbench
+
+1. Open **MySQL Workbench**.  
+2. Select your database: skinsync_db 
+3. Right-click the **products** table.  
+4. Choose **Table Data Import Wizard**.  
+5. Select the file:
+6. Use these settings:
+- **Field separator:** `,`
+- **Line separator:** `LF`
+- **Enclosed strings in:** `"`
+- **Null handling:** default values
+7. Click **Next → Next → Import**.
+
+Once completed, your database will contain the full set of example skincare product data used throughout the application.
+
+---
+
+### 📝 Notes
+- The CSV allows anyone installing the project to quickly load the required data without manually writing SQL.
+- If your product list updates, regenerate the CSV and replace the file.
+
+
 ### Front End Setup (React/Vite)
 
 1. **Navigate to the frontend project directory:**
