@@ -161,35 +161,28 @@ Wireframes / UI Previews
 
 ---
 
-### Seed Data (Importing the CSV File)
+### Seed Data
 
-This project includes a CSV file containing sample skincare product data, which is required for the app to function correctly.
+This project includes a SQL file containing sample skincare product data, which is required for the app to function correctly.
 
-#### 📄 
+#### 📄 File location
+`skin-sync-springboot-app/seed-products.sql`
 
 ---
 
-### 📥 How to Import the CSV Into MySQL Workbench
+#### 📥 How to Run the Seed Script
 
 1. Open **MySQL Workbench**.  
-2. Select your database: skinsync_db 
-3. Right-click the **products** table.  
-4. Choose **Table Data Import Wizard**.  
-5. Select the file:
-6. Use these settings:
-- **Field separator:** `,`
-- **Line separator:** `LF`
-- **Enclosed strings in:** `"`
-- **Null handling:** default values
-7. Click **Next → Next → Import**.
+2. Select your database: `skinsync_db`  
+3. Open a new SQL tab.  
+4. Open the file `seed-products.sql` in MySQL Workbench.  
+5. Execute the script.  
 
-Once completed, your database will contain the full set of example skincare product data used throughout the application.
+This will insert sample skincare products into the database so that your app works correctly without manually adding products.
 
 ---
 
-### 📝 Notes
-- The CSV allows anyone installing the project to quickly load the required data without manually writing SQL.
-- If your product list updates, regenerate the CSV and replace the file.
+> ✅ After running the seed script, you can log in, take the skin quiz, and see product recommendations populated from the database.
 
 
 ### Front End Setup (React/Vite)
