@@ -179,7 +179,7 @@ This project includes a SQL file containing sample skincare product data, which 
 5. Execute the script.  
 
 This will insert sample skincare products into the database so that your app works correctly without manually adding products.
-
+> ⚠️ Note: The seed data currently includes only Dry skin type products but covers all skin conditions. This allows the app to function without manually adding products.
 ---
 
 > ✅ After running the seed script, you can log in, take the skin quiz, and see product recommendations populated from the database.
